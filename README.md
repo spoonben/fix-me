@@ -9,7 +9,7 @@ Here are the instructions for this assignment:
 * Add each student's picture
 * Add each student's gender
 * Add each student's note
-* Each studen's name should be displayed, then when clicked it should display their image as well as their note.
+* Each student's name should be displayed, then when clicked it should display their image as well as their note.
 * Style!
 
 Good luck!
