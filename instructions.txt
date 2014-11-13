@@ -1,0 +1,6 @@
+Here are the instructions for this assignment: 
+	* Fix ALL bugs
+		* Basically make this thing work first
+	* Add each student's picture
+	* Add each student's gender
+	* Style!
