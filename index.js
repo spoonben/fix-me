@@ -1,22 +1,13 @@
 $(function() {
 
 	var students = getStudents();
-	listStudents(students);
-	$('#student').on('click', function() {
+
+	$('.student').on('click', function() {
 		// Insert your click event here!
+		$(this).find('.picture, .gender, .note').toggle();
+
 	});
 
-	function listStudents(students) {
-		for(var i = 0; i < students.length; i++){
-			var student = students[i];
-			var	html = '';
-			html += '<li class="student">';
-			html += '<div class="first-name">' + student.fname + '</div>';
-			html += '<div class="last-name">' + student.lname + '</div>';
-			html += '</li>';
-		}
-		$('#students').html(html);
-	};
 
 	function getStudents() {
 		var students = [
@@ -66,7 +57,7 @@ $(function() {
 	      "fname": "Donte",
 	      "lname": "Pollimeni",
 	      "gender": "male",
-	      "picture": "http://i.imgur.com/7KYjDNh.jpg"
+	      "picture": "http://i.imgur.com/7KYjDNh.jpg",
 	      "note": "Donte likes hats. Especially TF2 hats."
 	    },
 	    {
@@ -91,5 +82,28 @@ $(function() {
 	      "note": "Bikes, bikes, bikes, I like inferior hockey teams."
 	    }
 	  ];
+
+		function listStudents(students) {
+			var	html = '';
+			for(var i = 0; i < students.length; i++){
+				var student = students[i];
+
+				html += '<li class="student">';
+				html += '<div class="full-name">' + student.fname + ' ' + student.lname + '</div>';
+				html += '<div class="picture">' + '<img src=' + student.picture + '/>' + '</div>';
+				html += '<div class="gender"><span>Gender: </span>' + student.gender + '</div>';
+				html += '<div class="note"><span>About: </span>' + student.note + '</div>';
+				html += '</li>';
+
+				$('#students').html(html);
+			}
+		};
+
+		listStudents(students);
 	};
+
+
+
+
+
 });
