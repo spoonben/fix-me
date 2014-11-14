@@ -2,20 +2,22 @@ $(function() {
 
 	var students = getStudents();
 	listStudents(students);
-	$('#student').on('click', function() {
-		// Insert your click event here!
+	$('.student').on('click', function() {
+		$(this).find('.picture').toggle();
+		$(this).find('.note').toggle();
 	});
 
 	function listStudents(students) {
+		var	html = '';
 		for(var i = 0; i < students.length; i++){
 			var student = students[i];
-			var	html = '';
 			html += '<li class="student">';
-			html += '<div class="first-name">' + student.fname + '</div>';
-			html += '<div class="last-name">' + student.lname + '</div>';
+			html += '<div class="first-name">' + student.fname + ' ' + student.lname + '</div>';
+			html += '<div class="picture"><img src="' + student.picture + '"/></div>';
+			html += '<div class="note">' +student.note + '</div>';
 			html += '</li>';
 		}
-		$('#students').html(html);
+		$('#students').append(html);
 	};
 
 	function getStudents() {
@@ -39,7 +41,7 @@ $(function() {
 	      "lname": "Gibble",
 	      "gender": "male",
 	      "picture": "http://i.imgur.com/7KYjDNh.jpg",
-	      "note": "Gibble's teachers often yell at him \"GOSH DARNIT GIBBLE\""
+	      "note": "Gibble's teachers often yell at him \"GOD DAMNIT GIBBLE\""
 	    },
 	    {
 	      "fname": "Julie",
@@ -66,7 +68,7 @@ $(function() {
 	      "fname": "Donte",
 	      "lname": "Pollimeni",
 	      "gender": "male",
-	      "picture": "http://i.imgur.com/7KYjDNh.jpg"
+	      "picture": "http://i.imgur.com/7KYjDNh.jpg",
 	      "note": "Donte likes hats. Especially TF2 hats."
 	    },
 	    {
@@ -91,5 +93,6 @@ $(function() {
 	      "note": "Bikes, bikes, bikes, I like inferior hockey teams."
 	    }
 	  ];
+		return students;
 	};
 });
