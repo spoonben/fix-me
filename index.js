@@ -2,20 +2,26 @@ $(function() {
 
 	var students = getStudents();
 	listStudents(students);
-	$('#student').on('click', function() {
-		// Insert your click event here!
+	$('.student').on('click', function() {
+		$('.picture').hide();
+		$('.note').hide();
+		$(this).find('.picture').show();
+		$(this).find('.note').show();
 	});
 
 	function listStudents(students) {
+			var	html = '';
 		for(var i = 0; i < students.length; i++){
 			var student = students[i];
-			var	html = '';
+
 			html += '<li class="student">';
 			html += '<div class="first-name">' + student.fname + '</div>';
 			html += '<div class="last-name">' + student.lname + '</div>';
+			html += '<img class="picture" src="' + student.picture + '">';
+			html += '<div class="note">' + student.note + '</div>';
 			html += '</li>';
 		}
-		$('#students').html(html);
+		$('#students').append(html);
 	};
 
 	function getStudents() {
@@ -66,7 +72,7 @@ $(function() {
 	      "fname": "Donte",
 	      "lname": "Pollimeni",
 	      "gender": "male",
-	      "picture": "http://i.imgur.com/7KYjDNh.jpg"
+	      "picture": "http://i.imgur.com/7KYjDNh.jpg",
 	      "note": "Donte likes hats. Especially TF2 hats."
 	    },
 	    {
@@ -91,5 +97,6 @@ $(function() {
 	      "note": "Bikes, bikes, bikes, I like inferior hockey teams."
 	    }
 	  ];
+		return(students);
 	};
 });
