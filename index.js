@@ -2,21 +2,31 @@ $(function() {
 
 	var students = getStudents();
 	listStudents(students);
-	$('#student').on('click', function() {
-		// Insert your click event here!
-	});
-
 	function listStudents(students) {
-		for(var i = 0; i < students.length; i++){
+		var	html = '';
+		for(var i = 0; i<students.length; i++){
 			var student = students[i];
-			var	html = '';
 			html += '<li class="student">';
 			html += '<div class="first-name">' + student.fname + '</div>';
 			html += '<div class="last-name">' + student.lname + '</div>';
-			html += '</li>';
-		}
-		$('#students').html(html);
+			html += '<div class="note">' + student.note + '</div>';
+			html += '<div class="image"><img src="' + student.picture + '"></div>';
+			html += '</li>'
+		};
+
+		$('#students').append(html);
+
 	};
+
+	$('.student').on('click', function() {
+		$('.note').hide();
+		$('.image').hide();
+		$(this).find('.note').show();
+		$(this).find('.image').show();
+
+	});
+
+
 
 	function getStudents() {
 		var students = [
@@ -66,7 +76,7 @@ $(function() {
 	      "fname": "Donte",
 	      "lname": "Pollimeni",
 	      "gender": "male",
-	      "picture": "http://i.imgur.com/7KYjDNh.jpg"
+	      "picture": "http://i.imgur.com/7KYjDNh.jpg",
 	      "note": "Donte likes hats. Especially TF2 hats."
 	    },
 	    {
@@ -90,6 +100,8 @@ $(function() {
 	      "picture": "http://i.imgur.com/7KYjDNh.jpg",
 	      "note": "Bikes, bikes, bikes, I like inferior hockey teams."
 	    }
+
 	  ];
+		return(students);
 	};
 });
